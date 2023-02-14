@@ -1,10 +1,12 @@
 package august.bank.app.bankproject.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+
 import lombok.Data;
 
-@Entity
+@Document(collection = "Account")
 @Data
 public class Account {
 

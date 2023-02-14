@@ -1,14 +1,14 @@
 package august.bank.app.bankproject.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import org.springframework.data.annotation.Id;
 import lombok.Data;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
-@Entity
+@Document(collection = "User")
 @Data
 public class User {
 
@@ -20,7 +20,6 @@ public class User {
     private String email;
 
     private String password;
-
-    @ManyToMany
+    @DocumentReference(lookup = "Role")
     private List<Role> roles;
 }

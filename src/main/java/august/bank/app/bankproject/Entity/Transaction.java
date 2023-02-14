@@ -1,13 +1,16 @@
 package august.bank.app.bankproject.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
+
 @Data
-@Entity
+@Document(collection = "Transaction")
 public class Transaction {
 
     @Id
@@ -23,13 +26,14 @@ public class Transaction {
 
     private String type;
 
-    private Long from;
 
-    private Long to;
+    @DocumentReference(lazy = true)
+    private User from;
+
+    @DocumentReference(lazy = true)
+    private User to;
 
     private Double balance;
-
-
 
 
 }

@@ -1,17 +1,17 @@
 package august.bank.app.bankproject.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+
 import lombok.Data;
 
 import java.util.List;
 
-@Entity
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "Customer")
 @Data
 public class Customer {
 
-    @Id
+    
     private Long id;
 
     private String firstName;
@@ -19,11 +19,11 @@ public class Customer {
     private String lastName;
 
 
-    @OneToMany
+    
     private List<Account>  accounts;
 
 
-    @OneToMany
+    
     private List<Transaction> transactions;
 
 
